@@ -5,11 +5,10 @@ class StudentBase(BaseModel):
     name: str
     branch_id: int
     group_id: int
-    balance: float
 
 
 class StudentCreate(StudentBase):
-    pass
+    password: str
 
 
 class StudentRead(StudentBase):
@@ -17,7 +16,7 @@ class StudentRead(StudentBase):
 
 
 class StudentUpdate(StudentBase):
-    pass
+    password: str
 
 
 class StudentDelete(StudentBase):
@@ -28,4 +27,4 @@ class StudentResponse(BaseModel):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

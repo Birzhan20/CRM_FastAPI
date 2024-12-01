@@ -1,3 +1,5 @@
+from datetime import datetime
+from decimal import Decimal
 from enum import Enum
 from pydantic import BaseModel
 
@@ -9,7 +11,7 @@ class PaymentType(str, Enum):
 
 class PaymentBase(BaseModel):
     student_id: int
-    amount: float
+    amount: Decimal
     payment_type: PaymentType
 
     class Config:
@@ -21,7 +23,7 @@ class PaymentCreate(PaymentBase):
 
 
 class PaymentRead(PaymentBase):
-    pass
+    created_at: datetime
 
 
 class PaymentUpdate(PaymentBase):
@@ -36,4 +38,4 @@ class PaymentResponse(PaymentBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -7,7 +7,7 @@ class Branch(Base):
     __tablename__ = 'branches'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100), nullable=False)
+    name = Column(String(100), nullable=False, unique=True)
     company_id = Column(Integer, ForeignKey('companies.id', ondelete='CASCADE'), nullable=False)
 
     company = relationship('Company', back_populates='branches')

@@ -12,6 +12,11 @@ class LessonBase(BaseModel):
     student_id: int
     lesson_time: datetime
     lesson_type: LessonType
+    branch_id: int
+    teacher_id: int
+    subject_id: int
+    group_id: int
+    room: str
 
     @field_validator('lesson_time')
     def check_lesson_time(cls, value):
@@ -25,12 +30,7 @@ class LessonCreate(LessonBase):
 
 
 class LessonRead(LessonBase):
-    id: int
-    branch_id: int
-    teacher_id: int
-    subject_id: int
-    group_id: int
-    room: str
+    pass
 
     class Config:
         orm_mode = True
@@ -44,4 +44,4 @@ class LessonDelete(BaseModel):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

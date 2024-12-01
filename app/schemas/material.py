@@ -18,6 +18,7 @@ class MaterialUpdate(MaterialBase):
 
 class MaterialRead(MaterialBase):
     created_at: datetime
+    updated_at: datetime
 
 
 class MaterialDelete(MaterialBase):
@@ -28,4 +29,4 @@ class MaterialResponse(BaseModel):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

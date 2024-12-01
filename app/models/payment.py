@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, DateTime, ForeignKey, Float, Enum, func
+from sqlalchemy import Column, Integer, DateTime, ForeignKey, DECIMAL, Enum, func
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
@@ -8,7 +8,7 @@ class Payment(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     student_id = Column(Integer, ForeignKey('students.id', ondelete='CASCADE'), nullable=False)
-    amount = Column(Float, nullable=False)
+    amount = Column(DECIMAL, nullable=False)
     payment_type = Column(Enum('cash', 'card', name='payment_types'), nullable=False)
     created_at = Column(DateTime, default=func.now())
 

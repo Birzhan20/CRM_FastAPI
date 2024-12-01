@@ -1,16 +1,14 @@
-from sqlalchemy import Integer, String, Column, DateTime, ForeignKey
+from sqlalchemy import Integer, String, Column, ForeignKey
 from sqlalchemy.orm import relationship
-from datetime import datetime
 from app.core.database import Base
+from app.models.teacher import teacher_subjects
 
 
 class Subject(Base):
     __tablename__ = 'subjects'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100), nullable=False)
-    company_id = Column(Integer, ForeignKey('companies.id', ondelete='CASCADE'), nullable=False)
+    name = Column(String(100), nullable=False, unique=True)
 
-    company = relationship('Company', back_populates='subjects')
     teachers = relationship('Teacher', secondary=teacher_subjects, back_populates='subjects')
     lessons = relationship("Lesson", back_populates="subject")

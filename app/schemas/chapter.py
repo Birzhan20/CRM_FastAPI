@@ -3,16 +3,14 @@ from pydantic import BaseModel
 
 class ChapterBase(BaseModel):
     title: str
-    subject_id: int
-    company_id: int
 
 
 class ChapterCreate(ChapterBase):
-    pass
+    subject_id: int
 
 
 class ChapterRead(ChapterBase):
-    pass
+    subject_id: int
 
 
 class ChapterUpdate(ChapterBase):
@@ -22,5 +20,9 @@ class ChapterUpdate(ChapterBase):
 class ChapterDelete(ChapterBase):
     pass
 
+
+class ChapterResponse(ChapterBase):
+    pass
+
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -6,8 +6,9 @@ class AdminBase(BaseModel):
     branch_id: int
 
 
+
 class AdminCreate(AdminBase):
-    pass
+    password: str
 
 
 class AdminRead(AdminBase):
@@ -15,7 +16,7 @@ class AdminRead(AdminBase):
 
 
 class AdminUpdate(AdminBase):
-    pass
+    password: str
 
 
 class AdminDelete(AdminBase):
@@ -26,4 +27,4 @@ class AdminResponse(AdminBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

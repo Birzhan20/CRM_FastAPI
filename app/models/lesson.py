@@ -17,7 +17,7 @@ class Lesson(Base):
     subject_id = Column(Integer, ForeignKey('subjects.id'), nullable=False)
     group_id = Column(Integer, ForeignKey('groups.id'), nullable=False)
     room = Column(String, nullable=False)
-    date_time = Column(DateTime, nullable=False)
+    lesson_time = Column(DateTime, nullable=False)
     lesson_type = Column(Enum(LessonType), nullable=False)
 
     # Relationships

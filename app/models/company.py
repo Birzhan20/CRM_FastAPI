@@ -14,6 +14,5 @@ class Company(Base):
     created_at = Column(DateTime, default=func.now())
 
     branches = relationship('Branch', back_populates='company', cascade="all, delete-orphan")
-    subjects = relationship('Subject', back_populates='company', cascade="all, delete-orphan")
     chapters = relationship('Chapter', back_populates='company', cascade="all, delete-orphan")
     materials = relationship('Material', back_populates='company', cascade="all, delete-orphan")
