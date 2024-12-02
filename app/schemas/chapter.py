@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class ChapterBase(BaseModel):
-    title: str
+    name: str
 
 
 class ChapterCreate(ChapterBase):

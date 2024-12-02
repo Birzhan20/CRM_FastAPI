@@ -7,7 +7,7 @@ class Admin(Base):
     __tablename__ = 'admins'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100), nullable=False, unique=True, index=True),
+    name = Column(String(100), nullable=False, unique=True, index=True)
     password = Column(String(100), nullable=False)
     branch_id = Column(Integer, ForeignKey('branches.id', ondelete='CASCADE'), nullable=False)
 

@@ -1,9 +1,10 @@
-from sqlalchemy import ForeignKey, Column, Integer, DateTime, Enum, String
+from sqlalchemy import ForeignKey, Column, Integer, DateTime, String, Enum as SQLAEnum
 from sqlalchemy.orm import relationship
+from  enum import Enum
 from app.core.database import Base
 
 
-class LessonType(Enum):
+class LessonType(str, Enum):
     individual = 'individual'
     group = 'group'
 
@@ -18,7 +19,7 @@ class Lesson(Base):
     group_id = Column(Integer, ForeignKey('groups.id'), nullable=False)
     room = Column(String, nullable=False)
     lesson_time = Column(DateTime, nullable=False)
-    lesson_type = Column(Enum(LessonType), nullable=False)
+    lesson_type = Column(SQLAEnum(LessonType), nullable=False)
 
     # Relationships
     branch = relationship("Branch", back_populates="lessons")
