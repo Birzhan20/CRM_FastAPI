@@ -4,8 +4,14 @@ from app.models.progress import Progress
 from app.schemas.progress import ProgressCreate, ProgressUpdate, ProgressDelete, ProgressRead
 
 
+async def get_progress(db: AsyncSession, student_id: int):
+    result = await db.execute(select(Progress).filter(Progress.student_id == student_id))
+    return result.scalars().all()
+
+
 async def read_progress(db: AsyncSession, progress: ProgressRead):
-    return await db.scalar(select(Progress).where(Progress.student_id == progress.student_id))
+    result = await db.execute(select(Progress).filter(Progress.student_id == progress.student_id))
+    return result.scalar_one_or_none()
 
 
 async def create_progress(db: AsyncSession, progress: ProgressCreate):

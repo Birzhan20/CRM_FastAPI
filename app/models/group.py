@@ -11,6 +11,6 @@ class Group(Base):
     subject_id = Column(Integer, ForeignKey('subjects.id', ondelete='SET NULL'), nullable=True)
     room = Column(String(50), nullable=True)
 
-    subject = relationship('Subject', back_populates='group')
-    students = relationship('Student', back_populates='group')
-    lessons = relationship("Lesson", back_populates="group")
+    subject = relationship('Subject', back_populates='groups')
+    students = relationship('Student', back_populates='groups')
+    lessons = relationship("Lesson", back_populates="groups")

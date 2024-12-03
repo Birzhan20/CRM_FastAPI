@@ -13,7 +13,7 @@ class Teacher(Base):
 
     branch = relationship('Branch', back_populates='teachers')
     subjects = relationship('Subject', secondary='teacher_subjects', back_populates='teachers')
-    lessons = relationship("Lesson", back_populates="teacher")
+    lessons = relationship("Lesson", back_populates="teachers")
 
 
 # Ассоциативная таблица Teacher-Subject

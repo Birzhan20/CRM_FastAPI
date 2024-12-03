@@ -4,6 +4,11 @@ from app.models.material import Material
 from app.schemas.material import MaterialCreate, MaterialUpdate, MaterialDelete, MaterialRead
 
 
+async def get_by_name(db:AsyncSession, name:str):
+    result = await db.execute(select(Material).filter(Material.name == name))
+    return result.scalar_one_or_none()
+
+
 async def read_material(db: AsyncSession, material: MaterialRead):
     result = await db.execute(select(Material).where(Material.name == material.name))
     return result.scalar_one_or_none()

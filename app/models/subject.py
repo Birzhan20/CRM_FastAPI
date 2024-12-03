@@ -11,4 +11,4 @@ class Subject(Base):
     name = Column(String(100), nullable=False, unique=True)
 
     teachers = relationship('Teacher', secondary=teacher_subjects, back_populates='subjects')
-    lessons = relationship("Lesson", back_populates="subject")
+    lessons = relationship("Lesson", back_populates="subjects")

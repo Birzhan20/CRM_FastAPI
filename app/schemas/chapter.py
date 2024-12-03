@@ -3,14 +3,14 @@ from pydantic import BaseModel
 
 class ChapterBase(BaseModel):
     name: str
-
+    subject_id: int
 
 class ChapterCreate(ChapterBase):
-    subject_id: int
+    pass
 
 
 class ChapterRead(ChapterBase):
-    subject_id: int
+    pass
 
 
 class ChapterUpdate(ChapterBase):

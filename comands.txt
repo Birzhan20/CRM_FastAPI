@@ -1,0 +1,20 @@
+lscpu - архитектура, частота, кол-во ядер, кол-во потоков
+cat /proc/cpuinfo - детальная инфа по каждому ядру
+
+sudo dmidecode --type memory  - инфа о модулях озу
+free -h - оперативка используемая память
+
+
+sudo apt install lshw    # Для Ubuntu/Debian
+sudo yum install lshw    # Для CentOS/RedHat
+sudo lshw -json > server_info.json  - полная инфа о сервере
+
+
+sudo dmidecode > bios_info.txt  - модель серийник производитель сервера
+
+lsblk -o NAME,SIZE,MODEL,TYPE,MOUNTPOINT инфа о дисках и разделах
+
+
+
+
+

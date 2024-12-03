@@ -4,6 +4,11 @@ from app.models.homework import Homework
 from app.schemas.homework import HomeworkCreate, HomeworkUpdate, HomeworkDelete, HomeworkRead
 
 
+async def get_by_type(db: AsyncSession, type: str):
+    result = await db.execute(select(Homework).filter(Homework.type == type))
+    return result.scalar_one_or_none()
+
+
 async def read_homework(db: AsyncSession, homework: HomeworkRead):
     result = await db.execute(select(Homework).filter(Homework.type == homework.type))
     return result.scalar_one_or_none()

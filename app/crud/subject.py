@@ -4,8 +4,14 @@ from app.models.subject import Subject
 from app.schemas.subject import SubjectCreate, SubjectUpdate, SubjectDelete, SubjectRead
 
 
+async def get_subject(db: AsyncSession, name: str):
+    result = await db.execute(select(Subject).filter(Subject.name == name))
+    return result.scalar_one_or_none()
+
+
 async def read_subject(db: AsyncSession, subject: SubjectRead):
-    return await db.scalar(select(Subject).where(Subject.name == subject.name))
+    result = await db.execute(select(Subject).filter(Subject.name == subject.name))
+    return result.scalar_one_or_none()
 
 
 async def create_subject(db: AsyncSession, subject: SubjectCreate):

@@ -4,6 +4,11 @@ from app.models.group import Group
 from app.schemas.group import GroupCreate, GroupUpdate, GroupDelete, GroupRead
 
 
+async def get_by_name(db: AsyncSession, name: str):
+    result = await db.execute(select(Group).filter(Group.name == name))
+    return result.scalar_one_or_none()
+
+
 async def read_group(db: AsyncSession, group: GroupRead):
     result = await db.execute(select(Group).filter(Group.name == group.name))
     return result.scalar_one_or_none()

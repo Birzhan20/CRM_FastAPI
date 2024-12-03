@@ -4,6 +4,11 @@ from app.models.lesson import Lesson
 from app.schemas.lesson import LessonCreate, LessonUpdate, LessonDelete, LessonRead
 
 
+async def get_by_id(db: AsyncSession, group_id: int):
+    result = await db.execute(select(Lesson).filter(Lesson.group_id == group_id))
+    return result.scalar_one_or_none()
+
+
 async def read_lesson(db: AsyncSession, lesson: LessonRead):
     result = await db.execute(select(Lesson).filter(Lesson.group_id == lesson.group_id))
     return result.scalar_one_or_none()

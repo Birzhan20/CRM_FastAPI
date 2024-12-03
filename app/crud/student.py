@@ -4,8 +4,14 @@ from app.models.student import Student
 from app.schemas.student import StudentCreate, StudentUpdate, StudentDelete, StudentRead
 
 
+async def get_by_name(db: AsyncSession, name: str):
+    result = await db.execute(select(Student).filter(Student.name == name))
+    return result.scalar_one_or_none()
+
+
 async def read_student(db: AsyncSession, student: StudentRead):
-    return await db.scalar(select(Student).where(Student.name == student.name))
+    result = await db.execute(select(Student).filter(Student.name == student.name))
+    return result.scalar_one_or_none()
 
 
 async def create_student(db: AsyncSession, student: StudentCreate):

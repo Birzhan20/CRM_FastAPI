@@ -1,11 +1,15 @@
-from typing import List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from app.models.chapter import Chapter
 from app.schemas.chapter import ChapterCreate, ChapterUpdate, ChapterDelete, ChapterRead
 
 
-async def read_chapters(chapter: ChapterRead, db: AsyncSession, name: str):
+async def get_by_name(db: AsyncSession, name: str):
+    result = await db.execute(select(Chapter).filter(Chapter.name == name))
+    return result.scalar_one_or_none()
+
+
+async def read_chapters(chapter: ChapterRead, db: AsyncSession):
     result = await db.execute(select(Chapter).filter(Chapter.name == chapter.name))
     return result.scalar_one_or_none()
 

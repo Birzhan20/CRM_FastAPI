@@ -11,7 +11,7 @@ class Branch(Base):
     company_id = Column(Integer, ForeignKey('companies.id', ondelete='CASCADE'), nullable=False)
 
     company = relationship('Company', back_populates='branches')
-    admins = relationship('Admin', back_populates='branch', cascade="all, delete-orphan")
-    teachers = relationship('Teacher', back_populates='branch', cascade="all, delete-orphan")
-    students = relationship('Student', back_populates='branch', cascade="all, delete-orphan")
-    lessons = relationship("Lesson", back_populates="branch")
+    admins = relationship('Admin', back_populates='branches', cascade="all, delete-orphan")
+    teachers = relationship('Teacher', back_populates='branches', cascade="all, delete-orphan")
+    students = relationship('Student', back_populates='branches', cascade="all, delete-orphan")
+    lessons = relationship("Lesson", back_populates="branches")

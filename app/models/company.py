@@ -13,6 +13,6 @@ class Company(Base):
     logo = Column(String, nullable=True)
     created_at = Column(DateTime, default=func.now())
 
-    branches = relationship('Branch', back_populates='company', cascade="all, delete-orphan")
-    chapters = relationship('Chapter', back_populates='company', cascade="all, delete-orphan")
-    materials = relationship('Material', back_populates='company', cascade="all, delete-orphan")
+    branches = relationship('Branch', back_populates='companies', cascade="all, delete-orphan")
+    chapters = relationship('Chapter', back_populates='companies', cascade="all, delete-orphan")
+    materials = relationship('Material', back_populates='companies', cascade="all, delete-orphan")

@@ -4,8 +4,14 @@ from app.models.teacher import Teacher
 from app.schemas.teacher import TeacherCreate, TeacherUpdate, TeacherDelete, TeacherRead
 
 
+async def get_teacher(db: AsyncSession, name: str):
+    result = await db.execute(select(Teacher).where(Teacher.name == name))
+    return result.scalar_one_or_none()
+
+
 async def read_teacher(db: AsyncSession, teacher:TeacherRead):
-    return await db.scalar(select(Teacher).where(Teacher.name == teacher.name))
+    result = await db.execute(select(Teacher).filter(Teacher.name == teacher.name))
+    return result.scalar_one_or_none()
 
 
 async def create_teacher(db: AsyncSession, teacher:TeacherCreate):

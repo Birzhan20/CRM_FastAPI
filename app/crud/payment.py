@@ -4,8 +4,14 @@ from app.models.payment import Payment
 from app.schemas.payment import PaymentRead, PaymentCreate, PaymentUpdate, PaymentDelete
 
 
+async def get_by_student_id(db: AsyncSession, student_id: int):
+    result = await db.execute(select(Payment).where(Payment.student_id == student_id))
+    return result.scalar_one_or_none()
+
+
 async def read_payment(db: AsyncSession, payment: PaymentRead):
-    return await db.scalar(select(Payment).where(Payment.student_id == payment.student_id))
+    result = await db.execute(select(Payment).filter(Payment.student_id == payment.student_id))
+    return result.scalar_one_or_none()
 
 
 async def create_payment(db: AsyncSession, payment: PaymentCreate):

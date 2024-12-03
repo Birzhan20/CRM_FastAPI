@@ -32,15 +32,16 @@ class LessonCreate(LessonBase):
 class LessonRead(LessonBase):
     pass
 
-    class Config:
-        orm_mode = True
-
 
 class LessonUpdate(LessonBase):
     pass
 
 
-class LessonDelete(BaseModel):
+class LessonDelete(LessonBase):
+    id: int
+
+
+class LessonResponse(LessonBase):
     id: int
 
     class Config:

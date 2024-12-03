@@ -5,7 +5,7 @@ from app.core.database import Base
 
 
 class Progress(Base):
-    __tablename__ = 'progress'
+    __tablename__ = 'progresses'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     student_id = Column(Integer, ForeignKey('students.id', ondelete='CASCADE'), nullable=False)

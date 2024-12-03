@@ -8,7 +8,8 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'app')))
 
-from app.models import user, company, branch, company_branch_link, client, lesson, transaction
+from app.models import (admin, company, branch, lesson, chapter, group, homework, material,
+                        payment, progress, student, subject, teacher)
 from app.core.database import Base  # Импортируем Base, если он определен там
 
 # this is the Alembic Config object, which provides
@@ -25,6 +26,7 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
